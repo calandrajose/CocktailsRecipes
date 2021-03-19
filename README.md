@@ -1,6 +1,8 @@
+You can take a look at this project [HERE](https://github.com/facebook/create-react-app).
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](homemadebartender.netlify.app).
 
 ## Available Scripts
 
