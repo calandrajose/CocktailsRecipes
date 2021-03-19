@@ -17,14 +17,35 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
     paper: {
         position: 'absolute',
-        width: 600,
+        width: 450,
+        maxHeight: '90%',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+        overflow: 'scroll',
     },
+//     paper: {
+//         position: 'absolute',
+//         width: 500,
+//         backgroundColor: theme.palette.background.paper,
+//         boxShadow: theme.shadows[5],
+//         padding: theme.spacing(2, 4, 3),
+//         overflow: 'scroll',
+//         height: '100%',
+//         maxHeight: 500,
+//         display: 'block'
+//     },
+//     header: {
+//         padding: '12px 0',
+//         borderBottom: '1px solid darkgrey'
+//     },
+//     content: {
+//         padding: "12px 0",
+//         overflow: 'scroll'
+//     }
 }));
 
-const Cocktail = ({ imageUrl, name, id }) => {
+const Cocktail = ({ data }) => {
 
     const [modalStyle] = useState(getModalStyle);
     const [open, setOpen] = useState(false);
@@ -38,34 +59,60 @@ const Cocktail = ({ imageUrl, name, id }) => {
         setOpen(false);
     };
 
-    const { setRecipesId, cocktail } = useContext(ModalContext)
+    const { setRecipesId, cocktail, setCocktail } = useContext(ModalContext)
 
+    const showIngredients = (data) => {
+        const ingredients = [];
+        for (let i = 1; i < 16; i++) {
+            if (data[`strIngredient${i}`]) {
+                ingredients.push(
+                    <li><strong>{data[`strIngredient${i}`]}:</strong>  {data[`strMeasure${i}`]}</li>
+                )
+            }
+        }
+        return ingredients;
+    }
 
     return (
         <div className='col-md-4 mb-3'>
             <div className='card'>
-                <h5 className="card-header text">{name}</h5>
-                <img className="card-img-top" src={imageUrl} alt={`${name} image`} />
+                <h5 className="card-header text">{data.strDrink}</h5>
+                <img className="card-img-top" src={data.strDrinkThumb} alt={`${data.strDrink} image`} />
                 <div className='card-body'>
                     <button
                         onClick={e => {
                             e.preventDefault()
-                            setRecipesId(id)
+                            setRecipesId(data.idDrink)
                             handleOpen();
                         }}
                         className='button btn-block btn-primary'>Ver Receta
                     </button>
-                    <Modal
-                        open={open}
-                        onClose={()=>{
-                            setRecipesId(null);
-                            handleClose()
-                        }}    
-                    >
-                        <div style={modalStyle} className={classes.paper}>
-                            <h1>Desde Modal</h1>
-                        </div>
-                    </Modal>
+                    {cocktail ?
+                        <Modal
+                            open={open}
+                            onClose={() => {
+                                setRecipesId(null);
+                                setCocktail({})
+                                handleClose()
+                            }}
+                        >
+                            <div style={modalStyle} className={classes.paper}>
+                                <h2>{cocktail.strDrink}</h2>
+                                <h3 className='mt-4'>Instrucciones</h3>
+                                <p>
+                                    {cocktail.strInstructions}
+                                </p>
+                                <img className='img-fluid my-4' src={cocktail.strDrinkThumb} />
+                                <h3>Ingredientes y cantidades</h3>
+                                <ul>
+                                    {showIngredients(cocktail)}
+                                </ul>
+                            </div>
+                        </Modal>
+                        :
+                        null
+
+                    }
                 </div>
             </div>
         </div>

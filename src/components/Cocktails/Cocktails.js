@@ -10,10 +10,8 @@ const Cocktails = () => {
         <div className='row mt-5'>
             {recipes.map(recipe=>(
                 <Cocktail
-                    imageUrl={recipe.strDrinkThumb}
-                    name={recipe.strDrink}
+                    data={recipe}
                     key={recipe.idDrink}    
-                    id={recipe.idDrink}    
                 />
             ))}
         </div>  

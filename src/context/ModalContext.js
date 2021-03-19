@@ -5,7 +5,7 @@ export const ModalContext = createContext();
 
 const ModalProvider = (props) => {
     const [recipesId, setRecipesId] = useState(null)
-    const [cocktail, setCocktail] = useState(null)
+    const [cocktail, setCocktail] = useState({})
 
     useEffect(() => {
         if (!recipesId) return
@@ -22,7 +22,8 @@ const ModalProvider = (props) => {
         <ModalContext.Provider
             value={{
                 cocktail,
-                setRecipesId
+                setRecipesId,
+                setCocktail
             }}
         >
             {props.children}
