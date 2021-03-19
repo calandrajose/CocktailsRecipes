@@ -13,7 +13,7 @@ const RecipesProvider = (props)=>{
   useEffect(() => {
     if(Object.keys(params).length === 0)return
     const fetchRecipes = async ()=>{
-      const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}&c=${category}`;
+      const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${ingredient !== '' ? `i=${ingredient}` : `c=${category}`}`;
       const result = await axios(url);
       setRecipes(result.data.drinks);
     }
