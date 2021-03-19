@@ -64,7 +64,7 @@ const Form = () => {
 
                 <span className='orSpan'> O </span>
                 </div>
-                <div className='col-md-4'>
+                <div className='col-md-4 mb-4'>
                     <Select
                         options={categories}
                         onChangeHandler={onSelectChangeHandler}
