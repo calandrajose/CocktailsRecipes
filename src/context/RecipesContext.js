@@ -1,4 +1,4 @@
-import React, { createContext,useState, useEffect, useContext} from 'react'
+import React, { createContext,useState, useEffect} from 'react'
 import axios from 'axios'
 
 export const RecipesContext = createContext();
@@ -18,7 +18,7 @@ const RecipesProvider = (props)=>{
       setRecipes(result.data.drinks);
     }
     fetchRecipes()
-  }, [params]);
+  }, [ingredient, category, params]);
 
     return(
         <RecipesContext.Provider

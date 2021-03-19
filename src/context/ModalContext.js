@@ -12,7 +12,7 @@ const ModalProvider = (props) => {
         const fetchRecipes = async () => {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipesId}`;
             const result = await axios(url);
-            console.log(result.data.drinks);
+            // console.log(result.data.drinks);
             setCocktail(result.data.drinks[0]);
         }
         fetchRecipes()

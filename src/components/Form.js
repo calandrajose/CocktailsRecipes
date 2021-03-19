@@ -50,7 +50,7 @@ const Form = () => {
                 <legend>Busca cocktails por categoria o Ingrediente</legend>
             </fieldset>
             <div className='row mt-4'>
-                <div className='col-md-3'>
+                <div className='col-md-4'>
                     <input
                         className='form-control'
                         type='text'
@@ -60,8 +60,11 @@ const Form = () => {
                         value={inputs.ingredient}
                     />
                 </div>
-                <span> O </span>
-                <div className='col-md-3'>
+                <div className='col-md-1'>
+
+                <span className='orSpan'> O </span>
+                </div>
+                <div className='col-md-4'>
                     <Select
                         options={categories}
                         onChangeHandler={onSelectChangeHandler}

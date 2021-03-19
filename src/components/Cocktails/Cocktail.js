@@ -14,8 +14,8 @@ function getModalStyle() {
     };
 }
 
-const useStyles = makeStyles(theme => ({
-    paper: {
+const useStyles = makeStyles(theme =>({
+    paper : {
         position: 'absolute',
         width: 450,
         maxHeight: '90%',
@@ -23,27 +23,11 @@ const useStyles = makeStyles(theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         overflow: 'scroll',
-    },
-//     paper: {
-//         position: 'absolute',
-//         width: 500,
-//         backgroundColor: theme.palette.background.paper,
-//         boxShadow: theme.shadows[5],
-//         padding: theme.spacing(2, 4, 3),
-//         overflow: 'scroll',
-//         height: '100%',
-//         maxHeight: 500,
-//         display: 'block'
-//     },
-//     header: {
-//         padding: '12px 0',
-//         borderBottom: '1px solid darkgrey'
-//     },
-//     content: {
-//         padding: "12px 0",
-//         overflow: 'scroll'
-//     }
-}));
+        ['@media (max-width:600px)']:{
+            width: '60%',
+            maxHeight: '75%',
+        }
+    }}))
 
 const Cocktail = ({ data }) => {
 
@@ -66,7 +50,7 @@ const Cocktail = ({ data }) => {
         for (let i = 1; i < 16; i++) {
             if (data[`strIngredient${i}`]) {
                 ingredients.push(
-                    <li><strong>{data[`strIngredient${i}`]}:</strong>  {data[`strMeasure${i}`]}</li>
+                    <li key={data[`strIngredient${i}`]}><strong>{data[`strIngredient${i}`]}:</strong>  {data[`strMeasure${i}`]}</li>
                 )
             }
         }
@@ -77,7 +61,7 @@ const Cocktail = ({ data }) => {
         <div className='col-md-4 mb-3'>
             <div className='card'>
                 <h5 className="card-header text">{data.strDrink}</h5>
-                <img className="card-img-top" src={data.strDrinkThumb} alt={`${data.strDrink} image`} />
+                <img className="card-img-top" src={data.strDrinkThumb} alt={`${data.strDrink}`} />
                 <div className='card-body'>
                     <button
                         onClick={e => {
@@ -102,7 +86,7 @@ const Cocktail = ({ data }) => {
                                 <p>
                                     {cocktail.strInstructions}
                                 </p>
-                                <img className='img-fluid my-4' src={cocktail.strDrinkThumb} />
+                                <img className='img-fluid my-4' src={cocktail.strDrinkThumb} alt='cocktail image'/>
                                 <h3>Ingredientes y cantidades</h3>
                                 <ul>
                                     {showIngredients(cocktail)}
