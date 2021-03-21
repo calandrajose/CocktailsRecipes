@@ -1,4 +1,4 @@
-You can take a look at this project [HERE](homemadebartender.netlify.app).
+You can take a look at this project [HERE](https://homemadebartender.netlify.app/).
 
 # Getting Started with Create React App
 
