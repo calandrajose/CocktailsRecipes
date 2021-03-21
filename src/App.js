@@ -14,7 +14,7 @@ function App() {
       <ModalProvider>
         <ParamsProvider>
           <Header />
-          <div className='container mt-5'>
+          <div className='container mt-5 text-center center-block'>
             <div className='row'>
               <Form />
             </div>

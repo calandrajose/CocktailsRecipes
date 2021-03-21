@@ -9,11 +9,24 @@ body {
   background-color: #e5e5e5;
   min-height: 100%;
 }
-header {
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
   background-color: #ec3a49;
   color: white;
-  padding: 5rem 0;
+  padding: 15rem 0 5rem 0;
+  background-image: url('./cocktail-1542495_1920.jpg');
+  background-size: cover;
 }
+
+.heading h1{
+  color: #fff;
+  vertical-align: middle;
+  text-shadow: 4px 4px 5px rgb(105, 34, 34);
+}
+
 h1 {
   color: white;
   font-weight: 900;
